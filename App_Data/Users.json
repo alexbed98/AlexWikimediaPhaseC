@@ -1,1 +1,35 @@
-[{"Name":"Modérateur","Email":"admin@app.net","Password":"O2GYEtzXFrz+F+HNH/YxPihWIGTFLTvYad215JO7b5M=iI76Y3k2BYenrpKy+4zPuqUxVss=","Access":3,"Blocked":false,"Verified":true,"Notify":true,"Avatar":"/App_Assets/Users/cad0fd3c-826f-4c83-8cbc-4cf21dfa0040.png","Id":1},{"Name":"Super Usager","Email":"super@app.net","Password":"O2GYEtzXFrz+F+HNH/YxPihWIGTFLTvYad215JO7b5M=iI76Y3k2BYenrpKy+4zPuqUxVss=","Access":2,"Blocked":false,"Verified":true,"Notify":true,"Avatar":"/App_Assets/Users/de2aadf4-d27d-48bc-b5fd-888d729df8cc.png","Id":2},{"Name":"Usager","Email":"user@app.net","Password":"O2GYEtzXFrz+F+HNH/YxPihWIGTFLTvYad215JO7b5M=iI76Y3k2BYenrpKy+4zPuqUxVss=","Access":1,"Blocked":false,"Verified":true,"Notify":true,"Avatar":"/App_Assets/Users/c244cacf-23e2-4699-8eaf-846ce036fa2e.png","Id":3}]
+[
+  {
+    "Name": "Modérateur",
+    "Email": "admin@app.net",
+    "Password": "S4VzJg+yuLVrtp6gTvyn4ZT5Z3BDVEiqJYgxJWe8Y/I=BkJ2SdJ4hagqUSGplfcYAiynSno=",
+    "Access": 3,
+    "Blocked": false,
+    "Verified": true,
+    "Notify": true,
+    "Avatar": "/App_Assets/Users/5aa8957d-e980-4cac-b915-aaa63d0909f1.jpeg",
+    "Id": 1
+  },
+  {
+    "Name": "Walter White",
+    "Email": "walter@yopmail.com",
+    "Password": "KOHASk+I9NtK3fBdVTRE9Mig+/UMAoB1zz5VYSIFKew=7d0rCWzcxZtz5Qt3/1kuJtsXIOE=",
+    "Access": 2,
+    "Blocked": false,
+    "Verified": true,
+    "Notify": true,
+    "Avatar": "/App_Assets/Users/da131268-b08a-4d0c-b6c8-0729ddc8b4f0.png",
+    "Id": 2
+  },
+  {
+    "Name": "Saul Goodman",
+    "Email": "saul@yopmail.com",
+    "Password": "Rs8mxTSyIVURrG+HDgbVTZsGPL0fCwS3/j62Cj8WqYk=JJKAg0td6w4FpbILKdgFJsnyDUI=",
+    "Access": 1,
+    "Blocked": false,
+    "Verified": true,
+    "Notify": true,
+    "Avatar": "/App_Assets/Users/c34cc1e5-8e49-4ec4-aa8a-bd74bae0e1c5.png",
+    "Id": 3
+  }
+]
