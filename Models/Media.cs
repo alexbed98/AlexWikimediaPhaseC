@@ -22,9 +22,16 @@ namespace Models
         [JsonIgnore]
         public User Owner => DB.Users.Get(OwnerId).Copy();
 
-        public List<MediaLike> Likes { get; set; } = new List<MediaLike>();
+        [JsonIgnore]
+        public List<MediaLike> Likes => DB.MediaLikes.ToList().Where(like => like.MediaId == this.Id).ToList();
+
+        [JsonIgnore]
         public int LikesCount => Likes.Count;
+
+        [JsonIgnore]
         public bool LikedByCurrentUser => Likes.Any(l => l.UserId == User.ConnectedUser.Id);
+
+        [JsonIgnore]
         public List<string> UserNames => Likes.Select(l => l.UserName ?? "Utilisateur inconnu").ToList();
 
         public override bool IsValid()

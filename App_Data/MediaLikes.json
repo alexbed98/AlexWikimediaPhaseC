@@ -1,3 +1,52 @@
 [
-
+  {
+    "MediaId": 7,
+    "UserId": 1,
+    "ID": 1
+  },
+  {
+    "MediaId": 7,
+    "UserId": 2,
+    "ID": 2
+  },
+  {
+    "MediaId": 3,
+    "UserId": 2,
+    "ID": 3
+  },
+  {
+    "MediaId": 11,
+    "UserId": 2,
+    "ID": 4
+  },
+  {
+    "MediaId": 43,
+    "UserId": 1,
+    "ID": 5
+  },
+  {
+    "MediaId": 24,
+    "UserId": 1,
+    "ID": 6
+  },
+  {
+    "MediaId": 6,
+    "UserId": 1,
+    "ID": 7
+  },
+  {
+    "MediaId": 36,
+    "UserId": 2,
+    "ID": 8
+  },
+  {
+    "MediaId": 26,
+    "UserId": 1,
+    "ID": 9
+  },
+  {
+    "MediaId": 16,
+    "UserId": 2,
+    "ID": 10
+  }
 ]
