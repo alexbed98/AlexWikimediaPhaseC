@@ -29,6 +29,8 @@ namespace DAL
         static public EventsRepository Events { get; set; }
             = new EventsRepository();
 
+        static public MediaLikeRepository MediaLikes { get; set; } = new MediaLikeRepository();
+
         static public Repository<UnverifiedEmail> UnverifiedEmails { get; set; }
             = new Repository<UnverifiedEmail>();
 

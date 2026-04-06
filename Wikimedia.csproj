@@ -129,6 +129,8 @@
     <Compile Include="Models\LoginCredential.cs" />
     <Compile Include="Models\LoginsRepository.cs" />
     <Compile Include="Models\Media.cs" />
+    <Compile Include="Models\MediaLike.cs" />
+    <Compile Include="Models\MediaLikeRepository.cs" />
     <Compile Include="Models\MediasRepository.cs" />
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\NotificationsRepository.cs" />
@@ -209,6 +211,7 @@
     <Content Include="App_Data\RenewPasswordCommands.json" />
     <Content Include="App_Data\UnverifiedEmails.json" />
     <Content Include="App_Data\Users.json" />
+    <Content Include="App_Data\MediaLikes.json" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_header.cshtml" />
     <Content Include="Views\Medias\About.cshtml" />
