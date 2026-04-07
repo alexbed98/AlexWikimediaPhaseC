@@ -8,6 +8,6 @@ namespace Models
 {
     public class MediaLikeRepository : Repository<MediaLike>
     {
-
+        
     }
 }

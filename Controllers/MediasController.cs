@@ -35,6 +35,27 @@ public class MediasController : Controller
         if (Session["EndOfMedias"] == null) Session["EndOfMedias"] = false;
     }
 
+    public ActionResult ToggleLike(int mediaId)
+    {
+        int userId = Models.User.ConnectedUser.Id;
+
+        var existing = DB.MediaLikes.ToList().FirstOrDefault(l => l.MediaId == mediaId && l.UserId == userId);
+
+        if (existing != null)
+        {
+            DB.MediaLikes.Delete(existing.Id);
+            DB.MediaLikes.MarkHasChanged();
+        }
+        else
+        {
+            MediaLike newMediaLike = new MediaLike() { MediaId = mediaId, UserId = userId };
+            DB.MediaLikes.Add(newMediaLike);
+            DB.MediaLikes.MarkHasChanged();
+        }
+
+        return new EmptyResult();
+    }
+
     private void ResetMediasPaging()
     {
         Session["pageNum"] = 1;
@@ -195,6 +216,7 @@ public class MediasController : Controller
             {
                 if (DB.Users.HasChanged ||
                     DB.Medias.HasChanged ||
+                    DB.MediaLikes.HasChanged ||
                     forceRefresh)
                 {
                     InitSessionVariables();
