@@ -1,4 +1,5 @@
 ﻿using DAL;
+using Microsoft.Ajax.Utilities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -102,6 +103,22 @@ namespace Models
             if (HttpRuntime.Cache["onlineUsers"] == null)
                 HttpRuntime.Cache["onlineUsers"] = new List<int>();
             return (List<int>)HttpRuntime.Cache["onlineUsers"];
+        }
+
+        public List<int> GetUserMediaList()
+        {
+            var medias = DB.Medias.ToList();
+            List<int> userMedia = new List<int>();
+
+            foreach (Media media in medias)
+            {
+                if (media.OwnerId == this.Id)
+                {
+                    userMedia.Add(media.Id);
+                }
+            }
+
+            return userMedia;
         }
 
         public static User ConnectedUser

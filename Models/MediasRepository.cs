@@ -18,18 +18,15 @@ namespace Models
             }
             return Categories;
         }
-        public List<string> SharingUsers()
+        public List<int> SharingUsers()
         {
-            List<string> sharingUsers = new List<string>();
+            List<int> sharingUsers = new List<int>();
 
             foreach (Media media in ToList())
             {
-                if (media.Shared && !string.IsNullOrEmpty(media.Owner.Name))
+                if (media.Shared && !sharingUsers.Contains(media.Owner.Id))
                 {
-                    if (!sharingUsers.Contains(media.Owner.Name))
-                    {
-                        sharingUsers.Add(media.Owner.Name);
-                    }
+                    sharingUsers.Add(media.Owner.Id);
                 }
             }
 

@@ -15,6 +15,7 @@
 
     string checkSortByTitle = mediaSortBy == MediaSortBy.Title ? "fa-check" : "";
     string checkSortByDate = mediaSortBy == MediaSortBy.PublishDate ? "fa-check" : "";
+    string checkSortByLikes = mediaSortBy == MediaSortBy.LikesCount ? "fa-check" : "";
 
     string iconSortBy = "";
     string iconSortByTitle = "";
@@ -23,6 +24,7 @@
     {
         case MediaSortBy.Title: iconSortBy = "fa-solid fa-t"; iconSortByTitle = "Tri des vidéos par titre"; break;
         case MediaSortBy.PublishDate: iconSortBy = "fa-regular fa-calendar"; iconSortByTitle = "Tri des vidéos par date de publication"; break;
+        case MediaSortBy.LikesCount: iconSortBy = "fa-regular fa-thumbs-up"; iconSortByTitle = "Tri des vidéos par titre"; break;
     }
 
     bool userConnected = Models.User.ConnectedUser != null;
@@ -186,10 +188,14 @@
 @if (search && controller == "medias" && action == "list")
 {
     <div class="flex">
-        <input type="search" id="searchInput" class="section roundedBorder flexItem" value="@searchString" placeholder="Recherche...">
-        <div id="categorySelectPanel" class="flexItem">
+        <input style="flex: 2" type="search" id="searchInput" class="section roundedBorder flexItem" value="@searchString" placeholder="Recherche...">
+        <div style="flex: 1" id="categorySelectPanel" class="flexItem">
             <!-- Dynamically refreshed -->
             @{ Html.RenderPartial("GetMediasCategoriesList"); }
+        </div>
+        <div style="flex: 1" id="userSelectPanel" class="flexItem">
+            <!-- Dynamically refreshed -->
+            @{ Html.RenderPartial("GetUserList"); }
         </div>
     </div>
 }

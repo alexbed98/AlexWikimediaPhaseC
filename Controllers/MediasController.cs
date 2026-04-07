@@ -22,6 +22,7 @@ public class MediasController : Controller
         if (Session["Search"] == null) Session["Search"] = false;
         if (Session["SearchString"] == null) Session["SearchString"] = "";
         if (Session["SelectedCategory"] == null) Session["SelectedCategory"] = "";
+        if (Session["SelectedUser"] == null) Session["SelectedUser"] = "";
         if (Session["Categories"] == null) Session["Categories"] = DB.Medias.MediasCategories();
         if (Session["SortByTitle"] == null) Session["SortByTitle"] = true;
         if (Session["MediaSortBy"] == null) Session["MediaSortBy"] = MediaSortBy.PublishDate;
@@ -80,12 +81,18 @@ public class MediasController : Controller
             if (search)
             {
                 result = result.Where(c => (c.Title.ToLower() + c.Description.ToLower()).Contains(searchString));
-
-                string SelectedCategory = (string)Session["SelectedCategory"];
-                if (SelectedCategory != "")
-                    result = result.Where(c => c.Category == SelectedCategory);
             }
 
+            string SelectedCategory = (string)Session["SelectedCategory"];
+            if (SelectedCategory != "")
+                result = result.Where(c => c.Category == SelectedCategory);
+
+            string SelectedUser = (string)Session["SelectedUser"];
+            if (!string.IsNullOrEmpty(SelectedUser))
+            {
+                int userId = int.Parse(SelectedUser);
+                result = result.Where(c => c.OwnerId == userId);
+            }
 
             if ((bool)Session["SortAscending"])
             {
@@ -166,6 +173,25 @@ public class MediasController : Controller
             var Medias = DB.Medias.ToList().Where(c => c.Category == selectedCategory);
             if (Medias.Count() == 0)
                 Session["SelectedCategory"] = "";
+        }
+    }
+    public ActionResult GetUserList(bool forceRefresh = false)
+    {
+        try
+        {
+            InitSessionVariables();
+
+            bool search = (bool)Session["Search"];
+
+            if (search)
+            {
+                return PartialView();
+            }
+            return null;
+        }
+        catch (System.Exception ex)
+        {
+            return Content("Erreur interne" + ex.Message, "text/html");
         }
     }
 
@@ -285,6 +311,13 @@ public class MediasController : Controller
         Session["SelectedCategory"] = value;
         return RedirectToAction("List");
     }
+    public ActionResult SetSearchUser(string value)
+    {
+        ResetMediasPaging();
+        Session["SelectedUser"] = value;
+        return RedirectToAction("List");
+    }
+
     public ActionResult About()
     {
         return View();

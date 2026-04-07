@@ -1,13 +1,15 @@
 @{
-    List<string> users = DAL.DB.Medias.SharingUsers();
-    string selectedUser = Session["SelectedUser"] != null ? (string)Session["SelectedUser"] : "";
+    List<int> usersId = DAL.DB.Medias.SharingUsers();
+    string selectedUser = (string)Session["SelectedUser"];
 }
 
 <select id="userSelect" class="form-control">
     <option value="" selected>Tous les usagers</option>
-    @foreach (var user in users)
+    @foreach (var userId in usersId)
     {
-        string selected = selectedUser == user ? "selected" : "";
-        <option value="@user" @selected>@user</option>
+        User user = DAL.DB.Users.Get(userId);
+        var userMedia = user.GetUserMediaList();
+        string selected = selectedUser == user.Id.ToString() ? "selected" : "";
+        <option value="@user.Id" @selected>@user.Name (@userMedia.Count())</option>
     }
 </select>
