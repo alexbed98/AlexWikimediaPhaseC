@@ -17,18 +17,30 @@
         $(() => {
             newSession(600);
             //setCurrentPageLimit()
-            mediaDetails_ARP = new AutoRefreshedPanel("detailsPanel", "/Medias/GetMediaDetails", 5, mediaDetailsPostRefresh);
+            mediaDetails_ARP =
+                new AutoRefreshedPanel("detailsPanel", "/Medias/GetMediaDetails", 5, mediaDetailsPostRefresh);
+            mediasLikesAutoRefreshPanel =
+                new AutoRefreshedPanel("mediaLikesPanel", "/Medias/GetMediaLikes?mediaId=@currentMediaId", 10, mediaLikesPostRefresh);
             sessionStorage.setItem("RestoreScrollPosition", "1");
-            mediasLikesAutoRefreshPanel = new AutoRefreshedPanel("mediaLikesPanel", "/Medias/GetMediaLikes?mediaId=@currentMediaId", 10,
-        mediaLikesPostRefresh);
         })
+
+        function mediaLikesPostRefresh() {
+            $(".toggleLikeCmd").off();
+            $(".toggleLikeCmd").click(function (e) {
+                let mediaId = $(this).attr("mediaId");
+
+                mediasLikesAutoRefreshPanel.command("/Medias/ToggleLike?mediaId=" + mediaId);
+
+                e.preventDefault();
+            });
+        }
 
         function mediaDetailsPostRefresh() {
             $(".toggleLikeCmd").off();
             $(".toggleLikeCmd").click(function (e) {
                 let mediaId = $(this).attr("mediaId");
 
-                mediaDetails_ARP.command("/Medias/GetMediaLikes?mediaId=" + mediaId);
+                mediasLikesAutoRefreshPanel.command("/Medias/GetMediaLikes?mediaId=" + mediaId);
 
                 e.preventDefault();
             });
@@ -51,7 +63,6 @@
                 }
             }
         }
-
 
     </script>
 }

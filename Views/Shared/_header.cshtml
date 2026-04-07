@@ -194,33 +194,3 @@
     </div>
 }
 
-<!--@section Scripts {
-    <script>
-        let mediasLikesAutoRefreshPanel = null;
-
-        $(() => {
-
-            setInterval(() => {
-                $("#mediaLikesPanel").load("/Medias/GetMediaLikes?mediaId=@currentMediaId");
-                }, 100);-->
-
-            @*function mediaLikesPostRefresh() {
-                $(".toggleLikeCmd").off();
-                $(".toggleLikeCmd").click(function (e) {
-                    let mediaId = $(this).attr("mediaId");
-
-                    mediasLikesAutoRefreshPanel.command("/Medias/ToggleLike?mediaId=" + mediaId);
-
-                    e.preventDefault();
-                });
-            }
-
-            mediasLikesAutoRefreshPanel =
-                new AutoRefreshedPanel(
-                    "mediaLikesPanel",
-                    "/Medias/GetMediaLikes?mediaId=@currentMediaId",
-                    10,
-                    mediaLikesPostRefresh);*@
-        <!--});
-    </script>
-}-->
