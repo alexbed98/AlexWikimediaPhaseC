@@ -233,6 +233,18 @@ public class MediasController : Controller
             }
         }
     }
+
+    public ActionResult GetMediaLikes(int mediaId, bool forceRefresh = false)
+    {
+        if (DB.MediaLikes.HasChanged || forceRefresh)
+        {
+            Media media = DB.Medias.Get(mediaId);
+
+            return PartialView("GetMediaLikes", media);
+        }
+
+        return null;
+    }
     public ActionResult List()
     {
         ResetCurrentMediaInfo();

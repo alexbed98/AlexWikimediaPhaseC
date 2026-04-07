@@ -137,6 +137,11 @@
                 break;
             case "details":
                 <div id="mainMenuPanel" class="menu">
+                    <div id="mediaLikesPanel">
+                        <!-- action getmedialike retourne la vue partielle -->
+                        @{ Html.RenderAction("GetMediaLikes", "Medias", new { mediaId = currentMediaId, forceRefresh = true }); }
+
+                    </div>
                     @if ((bool)Session["UserCanEditCurrentMedia"] && userCanWrite)
                     {
                         <a href="/@controller/Edit" class="cmdIcon fa fa-pen-to-square" title="Modifier..."></a>
@@ -189,4 +194,29 @@
     </div>
 }
 
+@section Scripts {
+    <script>
+        let mediasLikesAutoRefreshPanel = null;
 
+        $(() => {
+
+            function mediaLikesPostRefresh() {
+                $(".toggleLikeCmd").off();
+                $(".toggleLikeCmd").click(function (e) {
+                    let mediaId = $(this).attr("mediaId");
+
+                    mediasLikesAutoRefreshPanel.command("/Medias/ToggleLike?mediaId=" + mediaId);
+
+                    e.preventDefault();
+                });
+            }
+
+            mediasLikesAutoRefreshPanel =
+                new AutoRefreshedPanel(
+                    "mediaLikesPanel",
+                    "/Medias/GetMediaLikes?mediaId=@currentMediaId",
+                    10,
+                    mediaLikesPostRefresh);
+        });
+    </script>
+}

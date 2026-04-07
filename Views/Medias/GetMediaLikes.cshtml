@@ -1,0 +1,9 @@
+@model Models.Media
+
+<div style="display: flex; justify-content: flex-end; gap: 5px; align-items: center; padding-right: 4px; cursor: pointer; color: dodgerblue">
+    <span title="Usagers qui ont commenté : ">0</span>
+    <i class="cmdIconSmall fa-regular fa-comment" style="color: dodgerblue; margin-left: 2px"></i>
+    <span title="Usagers qui ont aimé : &#10;@string.Join("\n", Model.UserNames)">@Model.LikesCount</span>
+    <i class="cmdIconSmall @(Model.LikedByCurrentUser ? "fa" : "fa-regular") fa-thumbs-up toggleLikeCmd" style="color: dodgerblue; margin-left: 2px"
+       mediaId="@Model.Id"></i>
+</div>

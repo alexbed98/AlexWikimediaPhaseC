@@ -138,18 +138,6 @@
                 highlightKeyword();
             }
 
-            function highlightKeyword() {
-                if ("@search" == "True") {
-                    let keyword = $("#searchInput").val();
-                    if (keyword.length > 0) {
-                        let titles = document.getElementsByClassName('mediaTitle');
-                        Array.from(titles).forEach(title => {
-                            highlight(keyword, title);
-                        })
-                    }
-                }
-            }
-
             function categoriesSelectPostRefresh() {
 
                 $("#categorySelect").off();
