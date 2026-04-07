@@ -237,6 +237,7 @@
     <Content Include="Views\Accounts\RenewPasswordCommand.cshtml" />
     <Content Include="Views\Accounts\Subscribe.cshtml" />
     <Content Include="Views\Medias\GetMediaLikes.cshtml" />
+    <Content Include="Views\Medias\GetUserList.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

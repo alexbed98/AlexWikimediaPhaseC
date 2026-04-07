@@ -18,5 +18,22 @@ namespace Models
             }
             return Categories;
         }
+        public List<string> SharingUsers()
+        {
+            List<string> sharingUsers = new List<string>();
+
+            foreach (Media media in ToList())
+            {
+                if (media.Shared && !string.IsNullOrEmpty(media.Owner.Name))
+                {
+                    if (!sharingUsers.Contains(media.Owner.Name))
+                    {
+                        sharingUsers.Add(media.Owner.Name);
+                    }
+                }
+            }
+
+            return sharingUsers;
+        }
     }
 }

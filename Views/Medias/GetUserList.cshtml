@@ -1,0 +1,13 @@
+@{
+    List<string> users = DAL.DB.Medias.SharingUsers();
+    string selectedUser = Session["SelectedUser"] != null ? (string)Session["SelectedUser"] : "";
+}
+
+<select id="userSelect" class="form-control">
+    <option value="" selected>Tous les usagers</option>
+    @foreach (var user in users)
+    {
+        string selected = selectedUser == user ? "selected" : "";
+        <option value="@user" @selected>@user</option>
+    }
+</select>
