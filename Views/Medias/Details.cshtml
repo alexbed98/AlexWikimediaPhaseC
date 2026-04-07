@@ -3,6 +3,7 @@
     ViewBag.PageTitle = "Détails";
     string search = Session["Search"] != null ? ((bool)Session["Search"]).ToString() : false.ToString();
     string SearchString = Session["SearchString"] != null ? (string)Session["SearchString"] : "";
+    int currentMediaId = Session["CurrentMediaId"] != null ? (int)Session["CurrentMediaId"] : 0;
 }
 
 <div id="detailsPanel" class="detailsPanel">
@@ -11,15 +12,27 @@
 
 @section Scripts {
     <script>
+        let mediasLikesAutoRefreshPanel = null;
+
         $(() => {
             newSession(600);
             //setCurrentPageLimit()
             mediaDetails_ARP = new AutoRefreshedPanel("detailsPanel", "/Medias/GetMediaDetails", 5, mediaDetailsPostRefresh);
             sessionStorage.setItem("RestoreScrollPosition", "1");
+            mediasLikesAutoRefreshPanel = new AutoRefreshedPanel("mediaLikesPanel", "/Medias/GetMediaLikes?mediaId=@currentMediaId", 10,
+        mediaLikesPostRefresh);
         })
 
         function mediaDetailsPostRefresh() {
-            // todo
+            $(".toggleLikeCmd").off();
+            $(".toggleLikeCmd").click(function (e) {
+                let mediaId = $(this).attr("mediaId");
+
+                mediaDetails_ARP.command("/Medias/GetMediaLikes?mediaId=" + mediaId);
+
+                e.preventDefault();
+            });
+
             highlightKeyword();
         }
 
@@ -38,5 +51,7 @@
                 }
             }
         }
+
+
     </script>
 }

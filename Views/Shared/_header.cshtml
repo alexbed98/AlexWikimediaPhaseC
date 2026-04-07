@@ -194,13 +194,17 @@
     </div>
 }
 
-@section Scripts {
+<!--@section Scripts {
     <script>
         let mediasLikesAutoRefreshPanel = null;
 
         $(() => {
 
-            function mediaLikesPostRefresh() {
+            setInterval(() => {
+                $("#mediaLikesPanel").load("/Medias/GetMediaLikes?mediaId=@currentMediaId");
+                }, 100);-->
+
+            @*function mediaLikesPostRefresh() {
                 $(".toggleLikeCmd").off();
                 $(".toggleLikeCmd").click(function (e) {
                     let mediaId = $(this).attr("mediaId");
@@ -216,7 +220,7 @@
                     "mediaLikesPanel",
                     "/Medias/GetMediaLikes?mediaId=@currentMediaId",
                     10,
-                    mediaLikesPostRefresh);
-        });
+                    mediaLikesPostRefresh);*@
+        <!--});
     </script>
-}
+}-->
