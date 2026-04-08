@@ -427,6 +427,9 @@ public class MediasController : Controller
             {
                 if (Media.OwnerId == Models.User.ConnectedUser.Id || Models.User.ConnectedUser.IsAdmin)
                 {
+                    foreach (var mediaLike in Media.Likes)
+                        DB.MediaLikes.Delete(mediaLike.Id);
+
                     DB.Medias.Delete(id);
                     return RedirectToAction("List");
                 }

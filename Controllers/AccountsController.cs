@@ -380,6 +380,18 @@ namespace Controllers
                 User user = DB.Users.Get(id);
                 if (user != null)
                 {
+                    var userMediaId = user.GetUserMediaList();
+
+                    foreach (int mediaId in userMediaId)
+                    {
+                        var media = DB.Medias.Get(mediaId);
+
+                        foreach (var mediaLike in media.Likes)
+                            DB.MediaLikes.Delete(mediaLike.Id);
+
+                        DB.Medias.Delete(mediaId);
+                    }
+
                     DB.Events.Add("DeleteUser " + user.Name);
                     string message = "Votre compte a été effacé par l'administrateur du site.";
                     DB.Users.Delete(id);
