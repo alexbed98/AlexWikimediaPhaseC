@@ -24,7 +24,7 @@
     {
         case MediaSortBy.Title: iconSortBy = "fa-solid fa-t"; iconSortByTitle = "Tri des vidéos par titre"; break;
         case MediaSortBy.PublishDate: iconSortBy = "fa-regular fa-calendar"; iconSortByTitle = "Tri des vidéos par date de publication"; break;
-        case MediaSortBy.LikesCount: iconSortBy = "fa-regular fa-thumbs-up"; iconSortByTitle = "Tri des vidéos par titre"; break;
+        case MediaSortBy.LikesCount: iconSortBy = "fa-regular fa-thumbs-up"; iconSortByTitle = "Tri des vidéos par nombre de j'aime"; break;
     }
 
     bool userConnected = Models.User.ConnectedUser != null;
@@ -125,6 +125,10 @@
                             <div class="dropdown-item item-layout">
                                 <i class="menuIcon fa @checkSortByTitle"></i>
                                 <a href="/Medias/SetMediaSortBy?mediaSortBy=@MediaSortBy.Title">Trier par titre</a>
+                            </div>
+                            <div class="dropdown-item item-layout">
+                                <i class="menuIcon fa @checkSortByLikes"></i>
+                                <a href="/Medias/SetMediaSortBy?mediaSortBy=@MediaSortBy.LikesCount">Trier par j'aimes</a>
                             </div>
 
                             <div class="dropdown-divider"></div>
