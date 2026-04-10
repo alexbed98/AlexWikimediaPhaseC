@@ -264,7 +264,7 @@ public class MediasController : Controller
         }
     }
 
-    public ActionResult GetMediaLikes(int mediaId, bool forceRefresh = false)
+    public ActionResult GetMediaLikes(int mediaId)
     { 
         Media media = DB.Medias.Get(mediaId);
 
